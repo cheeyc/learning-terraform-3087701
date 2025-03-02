@@ -59,11 +59,11 @@ module "alb" {
 
   target_groups = {
     blog-instance = {
-      name_prefix      = "blog-"
-      protocol         = "HTTP"
-      port             = 80
-      target_type      = "instance"
-      target_id        = aws_instance.blog.id
+      name_prefix = "blog-"
+      protocol    = "HTTP"
+      port        = 80
+      target_type = "instance"
+      target_id   = aws_instance.blog.id
     }
   }
 
@@ -71,6 +71,10 @@ module "alb" {
     http_tcp_listeners = {
       port     = 80
       protocol = "HTTP"
+
+      forward = {
+        target_group_key = "blog-instance"
+      }
     }
   }
 
