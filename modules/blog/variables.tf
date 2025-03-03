@@ -6,7 +6,7 @@ variable "instance_type" {
 variable "ami_filter" {
   description = "Name filter and owner for AMI"
 
-  type = object({
+  type    = object ({
     name  = string
     owner = string
   })
@@ -18,8 +18,9 @@ variable "ami_filter" {
 }
 
 variable "environment" {
-  description = "Development environment"
-  type = object({
+  description = "Deployment environment"
+
+  type        = object ({
     name           = string
     network_prefix = string
   })
@@ -29,12 +30,12 @@ variable "environment" {
   }
 }
 
-variable "asg_min_size" {
-  description = "Minimum number of instances in the ASG"
+variable "asg_min" {
+  description = "Minimum instance count for the ASG"
   default     = 1
 }
 
-variable "asg_max_size" {
-  description = "Maximum number of instances in the ASG"
+variable "asg_max" {
+  description = "Maximum instance count for the ASG"
   default     = 2
 }
